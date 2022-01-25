@@ -10,6 +10,8 @@ arr.push('hi');
 
 // 배열 - 리터럴 적용
 const items: string[] = [];
+
+const items2: string[] = []
 // items.push(10);
 
 // 튜플

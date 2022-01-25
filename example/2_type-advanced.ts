@@ -26,3 +26,25 @@ const divElement = document.querySelector('#app');
 divElement.innerHTML;
 // const empty = document.querySelector('#app') as null;
 // empty.innerHTML;
+
+enum Shoes {
+  Nike = "나이키",
+  Adidas = "아디다스"
+}
+
+var myShoes = Shoes.Nike;
+
+
+enum Answer {
+  Yes = 'Y',
+  No = 'N',
+}
+
+function askQuestion(answer: Answer){
+  if(answer === Answer.Yes){
+    console.log(1)
+  }
+  if(answer === Answer.No){
+    console.log(2)
+  }
+}

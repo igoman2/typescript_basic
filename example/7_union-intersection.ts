@@ -1,17 +1,17 @@
-function logMessage(value: string) {
-  console.log(value);
-}
-function logMessage(value: number) {
-  console.log(value);
-}
-function logMessage(value: any) {
-  console.log(value);
-}
+// function logMessage(value: string) {
+//   console.log(value);
+// }
+// function logMessage(value: number) {
+//   console.log(value);
+// }
+// function logMessage(value: any) {
+//   console.log(value);
+// }
 
 // # Union 타입 문법 - `any` 보다는 명시적임
-function logMessage(value: string | number) {
-  console.log(value);
-}
+// function logMessage(value: string | number) {
+//   console.log(value);
+// }
 
 function logMessage(value: string | number) {
   if (typeof value === 'string') {
@@ -38,3 +38,15 @@ function askSomeone(someone: Developer | Person) {
   someone.name; // O
   someone.age; // X
 }
+
+askSomeone({name: "dev", skill: 'js'})
+askSomeone({name: "design", age: 3})
+
+function askSomeone2(someone: Developer & Person) {
+  someone.age // O
+  someone.name // O
+  someone.skill // O 
+}
+
+askSomeone2({name: "dev", skill: 'js', age: 10})
+askSomeone2({name: "design", age: 3, skill: 'py'})

@@ -24,3 +24,8 @@ var detailItems: DetailedDropdown<number> = {
   description: 'b',
   tag: 'c'
 }
+
+function getB(b = 10) {
+  var c = 'hi'
+  return b + c
+}

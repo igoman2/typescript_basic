@@ -28,3 +28,4 @@ function printText(text: string, type?: string) {
   console.log(text);
 }
 printText('hi');
+printText('hello', 'tttt')

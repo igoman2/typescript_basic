@@ -5,6 +5,11 @@
 // function sum(a: number, b:number) {
 //   return a + b;
 // }
+interface Person {
+  name: string,
+  age: number
+}
+
 type SumParameter = number;
 
 function sum(a: SumParameter, b: SumParameter) {
@@ -12,10 +17,10 @@ function sum(a: SumParameter, b: SumParameter) {
 }
 
 // #2
-type Person = {
-  name: string;
-  age: number;
-};
+// type Person = {
+//   name: string;
+//   age: number;
+// };
 
 function getPerson(): Person {
   // ...

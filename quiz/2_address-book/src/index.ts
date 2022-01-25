@@ -1,101 +1,97 @@
 interface PhoneNumberDictionary {
-  [phone: string]: {
-    num: number;
-  };
+    [phone: string]: {
+        num: number
+    }
 }
 
 interface Contact {
-  name: string;
-  address: string;
-  phones: PhoneNumberDictionary;
+    name: string;
+    address: string;
+    phones: PhoneNumberDictionary;
 }
 
-// api
-// TODO: 아래 함수의 반환 타입을 지정해보세요.
-function fetchContacts() {
-  // TODO: 아래 변수의 타입을 지정해보세요.
-  const contacts = [
-    {
-      name: 'Tony',
-      address: 'Malibu',
-      phones: {
-        home: {
-          num: 11122223333,
-        },
-        office: {
-          num: 44455556666,
-        },
-      },
-    },
-    {
-      name: 'Banner',
-      address: 'New York',
-      phones: {
-        home: {
-          num: 77788889999,
-        },
-      },
-    },
-    {
-      name: '마동석',
-      address: '서울시 강남구',
-      phones: {
-        home: {
-          num: 213423452,
-        },
-        studio: {
-          num: 314882045,
-        },
-      },
-    },
-  ];
-  return new Promise(resolve => {
-    setTimeout(() => resolve(contacts), 2000);
-  });
+enum PhoneType {
+  Home = 'home',
+  Office = 'office',
+  Studio = 'studio'
 }
 
-// main
+function fetchContacts(): Promise<Contact[]> {
+    const contacts:  Contact[] = [
+          {
+            name: "Tony",
+            address: "Malibu",
+            phones: {
+                home: {
+                    num: 111122223333,
+                },
+                office: {
+                    num: 444455556666
+                }
+            }
+        },
+        {
+            name: "Banner",
+            address: "New York",
+            phones: {
+                home: {
+                    num: 111122223333,
+                },
+                office: {
+                    num: 444455556666
+                }
+            }
+        },
+        {
+            name: "마동석",
+            address: "서울시 강남구",
+            phones: {
+                home: {
+                    num: 111122223333,
+                },
+                office: {
+                    num: 444455556666
+                }
+            }
+        }
+    ]
+    return new Promise(resolve => {
+        setTimeout( () => {
+            resolve(contacts)
+        }, 2000)
+    })
+}
+
 class AddressBook {
-  // TODO: 아래 변수의 타입을 지정해보세요.
-  contacts = [];
+    contacts: Contact[] = [];
 
-  constructor() {
-    this.fetchData();
-  }
+    constructor(){
+        this.fetchData()
+    }
+    
+    fetchData(): void {
+        fetchContacts().then(resp => {
+            this.contacts = resp
+        })
+    }
 
-  fetchData() {
-    fetchContacts().then(response => {
-      this.contacts = response;
-    });
-  }
+    findContactByName(name: string): Contact[] {
+        return this.contacts.filter(contact => contact.name === name)
+    }
+    findContactByAddress(address: string): Contact[] {
+        return this.contacts.filter(contact => contact.address === address)
+    }
+    findContactByPhone(phoneNumber: number, phoneType: PhoneType) {
+        return this.contacts.filter(contact => contact.phones[phoneType].num === phoneNumber)
+    }
+    addContact(contact: Contact): void {
+        this.contacts.push(contact);
+    }
+    displayListByName(): string[] {
+        return this.contacts.map(contact => contact.name);
+    }
 
-  /* TODO: 아래 함수들의 파라미터 타입과 반환 타입을 지정해보세요 */
-  findContactByName(name) {
-    return this.contacts.filter(contact => contact.name === name);
-  }
-
-  findContactByAddress(address) {
-    return this.contacts.filter(contact => contact.address === address);
-  }
-
-  findContactByPhone(phoneNumber, phoneType: string) {
-    return this.contacts.filter(
-      contact => contact.phones[phoneType].num === phoneNumber
-    );
-  }
-
-  addContact(contact) {
-    this.contacts.push(contact);
-  }
-
-  displayListByName() {
-    return this.contacts.map(contact => contact.name);
-  }
-
-  displayListByAddress() {
-    return this.contacts.map(contact => contact.address);
-  }
-  /* ------------------------------------------------ */
+    displayListByAddress(): string[] {
+        return this.contacts.map(contact => contact.address);
+    }
 }
-
-new AddressBook();
