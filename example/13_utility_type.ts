@@ -8,9 +8,8 @@ interface Product {
 
 // 1.
 // 상품 목록을 받아오는 api 함수
-function fetchProducts(): Promise<Product []> {
-
-}
+// function fetchProducts(): Promise<Product []> {
+// }
 
 // Partial: 특정 타입의 부분을 허용하는 타입 (optional ?: 과 동일)
 // Pick: 기존의 타입에서 일부 요소만 사용하는 새로운 타입
@@ -65,20 +64,18 @@ interface UserProfile {
 //     profilePhotoUrl?: UserProfile['profilePhotoUrl']
 // }
 
-// #2
+// #2 mapped 타입으로 #1을 축약
 // type UserProfileUpdate = {
 //     [p in 'username' | 'email' | 'profilePhotoUrl']?: UserProfile[p]
 // }
 // type UserProfileKeys = keyof UserProfile
 
-// #3
+// #3 keyof 연산을 통해 #2 축약
 // type UserProfileUpdate = {
 //     [p in keyof UserProfile]?: UserProfile[p]
 // }
 
-// #4
+// #4 제네릭을 통해 #3 축약. Partial의 구현체 
 type Subset<T> = {
     [p in keyof T] ?: T[p]
 }
-
-const obj: Partial

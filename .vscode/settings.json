@@ -1,3 +1,36 @@
 {
-  "liveServer.settings.port": 5502
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, D2Coding",
+  "editor.formatOnPaste": true,
+  "workbench.iconTheme": "vs-seti",
+  "window.autoDetectColorScheme": true,
+  // "[javascript]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode",
+  //     "editor.formatOnSave": true
+  // },
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "security.workspace.trust.untrustedFiles": "open",
+  "vetur.completion.tagCasing": "initial",
+  "gitlens.advanced.messages": {
+    "suppressGitMissingWarning": true
+  },
+  "git.ignoreMissingGitWarning": true,
+  "bracketPairColorizer.depreciation-notice": false,
+  // "[html]": {
+  //     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // }
+  "editor.codeActionsOnSave": {
+    // For ESLint
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ]
 }
